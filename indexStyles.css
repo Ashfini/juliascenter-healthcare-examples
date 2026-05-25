@@ -1,3 +1,5 @@
+/* indexStyles.css */
+
 :root {
   --primary: #0d5c75;
   --secondary: #f4f9fb;
@@ -7,9 +9,12 @@
   --white: #ffffff;
 
   --radius: 16px;
+
   --shadow:
     0 10px 30px rgba(0, 0, 0, 0.08);
 }
+
+/* RESET */
 
 * {
   margin: 0;
@@ -26,6 +31,9 @@ body {
   color: var(--dark);
   line-height: 1.6;
   background: #fff;
+
+  /* prevents fixed header overlap */
+  padding-top: 90px;
 }
 
 img {
@@ -46,18 +54,39 @@ a {
 /* HEADER */
 
 .header {
-  position: sticky;
+  position: fixed;
+
   top: 0;
+  left: 0;
+
+  width: 100%;
+
   z-index: 1000;
 
   background: rgba(255,255,255,0.95);
+
   backdrop-filter: blur(12px);
 
   border-bottom: 1px solid #eee;
+
+  transition:
+    transform 0.35s ease,
+    background 0.3s ease;
+}
+
+/* hide on scroll */
+.header.hide {
+  transform: translateY(-100%);
+}
+
+/* show when hovered */
+.header:hover {
+  transform: translateY(0);
 }
 
 .nav-wrapper {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 
@@ -67,6 +96,7 @@ a {
 .logo {
   font-size: 1.4rem;
   font-weight: 800;
+
   color: var(--primary);
 }
 
@@ -78,16 +108,24 @@ a {
 .nav a {
   color: var(--dark);
   font-weight: 500;
+
+  transition: 0.2s ease;
+}
+
+.nav a:hover {
+  color: var(--primary);
 }
 
 /* BUTTONS */
 
 .btn {
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
 
   padding: 0.9rem 1.5rem;
+
   border-radius: 999px;
 
   font-weight: 600;
@@ -109,6 +147,11 @@ a {
   color: var(--primary);
 }
 
+.btn-secondary:hover {
+  background: var(--primary);
+  color: white;
+}
+
 .btn-light {
   background: white;
   color: var(--primary);
@@ -123,6 +166,7 @@ a {
 
 .hero {
   padding: 7rem 0;
+
   background:
     linear-gradient(
       135deg,
@@ -133,30 +177,41 @@ a {
 
 .hero-grid {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
+
   gap: 4rem;
+
   align-items: center;
 }
 
 .hero-content h1 {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
+
   line-height: 1.1;
+
   margin-bottom: 1.5rem;
 }
 
 .hero-content p {
   color: var(--gray);
+
   margin-bottom: 2rem;
+
   max-width: 600px;
 }
 
 .eyebrow {
   display: inline-block;
+
   margin-bottom: 1rem;
 
   color: var(--accent);
+
   font-weight: 700;
+
   text-transform: uppercase;
+
   letter-spacing: 1px;
 }
 
@@ -187,6 +242,7 @@ section {
 
 .service-grid {
   display: grid;
+
   grid-template-columns:
     repeat(auto-fit, minmax(250px, 1fr));
 
@@ -195,7 +251,9 @@ section {
 
 .card {
   background: white;
+
   padding: 2rem;
+
   border-radius: var(--radius);
 
   box-shadow: var(--shadow);
@@ -219,6 +277,7 @@ section {
 
 .stats-grid {
   display: grid;
+
   grid-template-columns:
     repeat(auto-fit, minmax(200px, 1fr));
 
@@ -227,8 +286,11 @@ section {
 
 .stat-card {
   background: white;
+
   padding: 2rem;
+
   border-radius: var(--radius);
+
   text-align: center;
 
   box-shadow: var(--shadow);
@@ -243,6 +305,7 @@ section {
 
 .cta-box {
   background: var(--primary);
+
   color: white;
 
   border-radius: var(--radius);
@@ -250,8 +313,10 @@ section {
   padding: 4rem;
 
   display: flex;
+
   justify-content: space-between;
   align-items: center;
+
   gap: 2rem;
 }
 
@@ -259,12 +324,15 @@ section {
 
 .footer {
   background: #0f172a;
+
   color: white;
+
   padding: 4rem 0;
 }
 
 .footer-grid {
   display: grid;
+
   grid-template-columns:
     repeat(auto-fit, minmax(250px, 1fr));
 
@@ -278,6 +346,7 @@ section {
   .hero-grid,
   .cta-box {
     grid-template-columns: 1fr;
+
     flex-direction: column;
   }
 
@@ -295,7 +364,9 @@ section {
 
   .cta-buttons {
     width: 100%;
+
     display: flex;
+
     flex-direction: column;
   }
 
